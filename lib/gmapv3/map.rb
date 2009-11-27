@@ -48,8 +48,19 @@ module GoogleMap
    		js <<	 "mapTypeControl: #{mapTypeControl},"
       js <<    "mapTypeId: google.maps.MapTypeId.#{mapType}"
       js <<   " };"
-      
       js << "var map = new google.maps.Map(document.getElementById(\"#{self.div}\"), myOptions);"
+      ########## Marker stuff #########
+      js << "var marker;"
+ 		  js << "var myLatLng;"
+ 		  js << "var icon"
+ 		  
+ 		  markers.each do |marker|
+ 		    js << marker.to_js
+	    end
+      
+      ##################################
+
+      
       js << "}"
       return js.join("\n")
     end

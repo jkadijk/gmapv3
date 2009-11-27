@@ -13,4 +13,15 @@ describe "GoogleMap::Map" do
     map = GoogleMap::Map.new('map')
     map.should respond_to 'to_html'
   end
+  
+end
+
+describe "Marker" do
+  it "should initialize options" do
+    marker = GoogleMap::Marker.new([10.5,5.6], :title => 'Title', :icon => 'icon.png')
+    marker.position.should == [10.5,5.6]
+    marker.title.should == 'Title'
+    marker.icon.should == 'icon.png'
+  end
+  
 end
