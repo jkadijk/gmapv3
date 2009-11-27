@@ -53,10 +53,22 @@ module GoogleMap
       js << "var marker;"
  		  js << "var myLatLng;"
  		  js << "var icon"
+ 		  js << "var content"
+ 		  js << "var infowindow = new google.maps.InfoWindow({"
+	    js <<	"size: new google.maps.Size(500,200)"
+			js << "});"
+			
+			js << "function makeInfoWindow(markerer, content, infowindow){ "
+    	js << "   google.maps.event.addListener(markerer, 'click', function () { "
+    	js << "    infowindow.set_content(content); "
+    	js <<    "infowindow.open(map, markerer); "
+    	js << " }); "
+    	js << "}"
  		  
  		  markers.each do |marker|
  		    js << marker.to_js
 	    end
+	    
       
       ##################################
 

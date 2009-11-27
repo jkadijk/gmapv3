@@ -3,7 +3,9 @@ module GoogleMap
     attr_accessor :position,
                   :title,
                   :icon,
-                  :map
+                  :map,
+                  :infowindow
+                  
     def initialize(position, options = {})
       self.position = position
       self.map = 'map'
@@ -19,6 +21,11 @@ module GoogleMap
       js <<     "icon: \"#{icon}\"," if icon
       js <<			"title: \"#{title}\""
       js <<	   "});"
+      
+      if infowindow 
+        js << "content = \"#{infowindow}\";"
+        js << "makeInfoWindow(marker, content , infowindow);"
+      end
     end
   end
 end
