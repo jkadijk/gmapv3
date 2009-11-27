@@ -26,6 +26,7 @@ module GoogleMap
         js << "content = \"#{infowindow}\";"
         js << "makeInfoWindow(marker, content , infowindow);"
       end
+      return js.join("\n")
     end
   end
 end
