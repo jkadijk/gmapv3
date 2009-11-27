@@ -5,6 +5,7 @@ module GoogleMap
                   :mapTypeControl,
                   :mapType,
                   :markers,
+                  :draggable,
                   :div
                   
     #Initializes the map 
@@ -21,6 +22,7 @@ module GoogleMap
       self.mapTypeControl = false
       self.mapType = 'HYBRID'
       self.markers = []
+      self.draggable = true
       options.each_pair { |key, value| send("#{key}=", value) }
     end
     
@@ -44,6 +46,7 @@ module GoogleMap
       js <<  "var latlng = new google.maps.LatLng(#{center[0]}, #{center[1]});"
       js <<  "var myOptions = {"
       js <<   " zoom: #{zoom},"
+      js <<   " draggable: #{draggable},"
       js <<    "center: latlng,"
    		js <<	 "mapTypeControl: #{mapTypeControl},"
       js <<    "mapTypeId: google.maps.MapTypeId.#{mapType}"
